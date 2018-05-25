@@ -1,5 +1,8 @@
 package com.product.bps.entity;
 
-public class Vendor {
+import org.springframework.stereotype.Component;
+
+@Component
+public class Vendor { 
 
 }
