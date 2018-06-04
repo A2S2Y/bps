@@ -19,6 +19,4 @@ public class VendorType {
 
 	@Column(name = "amount")
 	private float amount;
-	
-	
 }
