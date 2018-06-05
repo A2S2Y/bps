@@ -2,7 +2,7 @@ package com.product.bps.dto;
 
 public class CustomerDto {
 
-	private int customerId;
+	private String customerId;
 	private String customerName;
 	private String contactNumber;
 	private String mailId;
@@ -13,10 +13,10 @@ public class CustomerDto {
 	private String cardNumber;
 	private float balance;
 
-	public int getCustomerId() {
+	public String getCustomerId() {
 		return customerId;
 	}
-	public void setCustomerId(int customerId) {
+	public void setCustomerId(String customerId) {
 		this.customerId = customerId;
 	}
 	public String getCustomerName() {

@@ -8,18 +8,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import org.springframework.stereotype.Component;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-@Component
 @Entity
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "customer_id")
-	private int customerId;
+	private long customerId;
 
 	@Column(name = "customer_name")
 	private String customerName;
@@ -34,9 +29,10 @@ public class Customer {
 	private String country;
 	private String address;
 
-	@ManyToOne()
-	@JoinColumn(name = "vendor_type_id", unique = true)
-	private VendorType vendorType;
+	@ManyToOne
+	@JoinColumn(name = "vendor_type_id")
+	 VendorType vendorType;
+	
 	private String cardNumber;
 	private float balance;
 
@@ -44,101 +40,77 @@ public class Customer {
 	@JoinColumn(name = "administrator_id", unique = true)
 	private Administrator administrator;
 	private boolean paid;
-
-	public int getCustomerId() {
+	public long getCustomerId() {
 		return customerId;
 	}
-
-	public void setCustomerId(int customerId) {
+	public void setCustomerId(long customerId) {
 		this.customerId = customerId;
 	}
-
 	public String getCustomerName() {
 		return customerName;
 	}
-
 	public void setCustomerName(String customerName) {
 		this.customerName = customerName;
 	}
-
 	public String getContactNumber() {
 		return contactNumber;
 	}
-
 	public void setContactNumber(String contactNumber) {
 		this.contactNumber = contactNumber;
 	}
-
 	public String getMailId() {
 		return mailId;
 	}
-
 	public void setMailId(String mailId) {
 		this.mailId = mailId;
 	}
-
 	public String getState() {
 		return state;
 	}
-
 	public void setState(String state) {
 		this.state = state;
 	}
-
 	public String getCountry() {
 		return country;
 	}
-
 	public void setCountry(String country) {
 		this.country = country;
 	}
-
 	public String getAddress() {
 		return address;
 	}
-
 	public void setAddress(String address) {
 		this.address = address;
 	}
-
 	public VendorType getVendorType() {
 		return vendorType;
 	}
-
 	public void setVendorType(VendorType vendorType) {
 		this.vendorType = vendorType;
 	}
-
 	public String getCardNumber() {
 		return cardNumber;
 	}
-
 	public void setCardNumber(String cardNumber) {
 		this.cardNumber = cardNumber;
 	}
-
 	public float getBalance() {
 		return balance;
 	}
-
 	public void setBalance(float balance) {
 		this.balance = balance;
 	}
-
 	public Administrator getAdministrator() {
 		return administrator;
 	}
-
 	public void setAdministrator(Administrator administrator) {
 		this.administrator = administrator;
 	}
-
 	public boolean isPaid() {
 		return paid;
 	}
-
 	public void setPaid(boolean paid) {
 		this.paid = paid;
 	}
-
+	
 }

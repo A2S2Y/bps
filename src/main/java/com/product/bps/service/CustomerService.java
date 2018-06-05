@@ -8,6 +8,7 @@ import com.product.bps.entity.Customer;
 import com.product.bps.entity.VendorType;
 import com.product.bps.repository.CustomerRepository;
 import com.product.bps.repository.VendorTypeRepository;
+import com.product.bps.util.CustomerUtility;
 
 @Service
 public class CustomerService {
@@ -17,6 +18,9 @@ public class CustomerService {
 	
 	@Autowired
 	VendorTypeRepository vendorTypeRepository;
+	
+	@Autowired
+	CustomerUtility customerUtility;
 	
 	
 
@@ -42,6 +46,17 @@ public class CustomerService {
 		System.out.println("------------------save------------------"+customer);
 		customerRepository.save(customer);
 		System.out.println("------------------save------------------"+customer.toString());
+	}
+	
+	public CustomerDto getCustomer(String id) {
+		
+		Customer customer = new Customer();
+		
+		customer = customerRepository.findByCustomerId(Long.parseLong(id));
+		
+		CustomerDto customerDto = 	customerUtility.getDetails(customer);
+		
+		return customerDto;
 	}
 
 }
