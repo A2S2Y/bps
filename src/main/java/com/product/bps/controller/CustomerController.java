@@ -62,5 +62,18 @@ public class CustomerController {
 		
 
 	}
+	
+	@RequestMapping(value = "/customerDelete/{id}", method = RequestMethod.DELETE)
+	public void customerDelete(@PathVariable(value = "id") String id, HttpServletResponse response)
+			throws IOException {
+
+		 customerService.deleteCustomer(id);
+		// return response.setStatus(200, "Successfull");
+		
+
+	}
+	
+	
+	
 
 }

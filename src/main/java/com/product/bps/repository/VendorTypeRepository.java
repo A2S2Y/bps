@@ -7,5 +7,5 @@ import com.product.bps.entity.VendorType;
 
 @Repository
 public interface VendorTypeRepository extends JpaRepository<VendorType,Long>{
-	public VendorType findByVendorTypeId(int id);
+	public VendorType findByVendorTypeId(Long id);
 }
