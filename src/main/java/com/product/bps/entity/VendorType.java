@@ -7,8 +7,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "vendor_type")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class VendorType {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
