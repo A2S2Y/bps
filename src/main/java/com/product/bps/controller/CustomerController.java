@@ -44,7 +44,7 @@ public class CustomerController {
 	}
 
 	@RequestMapping(value = "/customerGetDetails/{id}", method = RequestMethod.GET)
-	public CustomerDto customerGet(@PathVariable(value = "id") String id, HttpServletResponse response)
+	public CustomerDto customerGet(@PathVariable(value = "id") String id)
 			throws IOException {
 
 		CustomerDto customerDto = new CustomerDto();
@@ -59,7 +59,7 @@ public class CustomerController {
 	}
 	
 	@RequestMapping(value = "/customerDelete/{id}", method = RequestMethod.DELETE)
-	public void customerDelete(@PathVariable(value = "id") String id, HttpServletResponse response)
+	public void customerDelete(@PathVariable(value = "id") String id)
 			throws IOException {
 
 		 customerService.deleteCustomer(id);

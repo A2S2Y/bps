@@ -21,7 +21,8 @@ public class CustomerUtility {
 		
 		customerDto.setVendorTypeId(String.valueOf(customer.getVendorType().getVendorTypeId()));
 		customerDto.setCardNumber(customer.getCardNumber());
-		customerDto.setBalance(customerDto.getBalance());
+		customerDto.setBalance(customer.getBalance());
+		customerDto.setPaid(customer.getPaid());
 		
 		return customerDto;
 		
