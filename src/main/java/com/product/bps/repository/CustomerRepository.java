@@ -7,5 +7,5 @@ import com.product.bps.entity.Customer;
 
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer,Long>{
-
+	public Customer findByCustomerId(Long id);
 }

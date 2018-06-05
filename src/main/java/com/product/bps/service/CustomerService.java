@@ -11,37 +11,38 @@ import com.product.bps.repository.VendorTypeRepository;
 
 @Service
 public class CustomerService {
-	
+
 	@Autowired
 	CustomerRepository customerRepository;
-	
+
 	@Autowired
 	VendorTypeRepository vendorTypeRepository;
-	
-	
 
 	public void saveCustomer(CustomerDto customerJson) {
-		
-		Customer customer = new Customer();
-		
-		
+
+		Customer customer = null;
+
+		if (customerJson.getCustomerId() != null){
+			customer = customerRepository.findByCustomerId(Long.parseLong(customerJson.getCustomerId()));
+		} else {
+			customer = new Customer();
+		}
+
 		customer.setCustomerName(customerJson.getCustomerName());
 		customer.setContactNumber(customerJson.getContactNumber());
 		customer.setMailId(customerJson.getMailId());
 		customer.setState(customerJson.getState());
 		customer.setCountry(customerJson.getCountry());
 		customer.setAddress(customerJson.getAddress());
-		
-		VendorType vendorTypeId = vendorTypeRepository.findByVendorTypeId(Integer.parseInt(customerJson.getVendorTypeId()));
-		
+
+		VendorType vendorTypeId = vendorTypeRepository
+				.findByVendorTypeId(Long.parseLong(customerJson.getVendorTypeId()));
 		customer.setVendorType(vendorTypeId);
 		customer.setCardNumber(customerJson.getCardNumber());
 		customer.setBalance(customerJson.getBalance());
-		//customer.setAdministrator(customerJson.getAdministratorId());
-		customer.setPaid(customerJson.isPaid());
-		System.out.println("------------------save------------------"+customer);
+		// customer.setAdministrator(customerJson.getAdministratorId());
+		customer.setPaid(customerJson.getPaid());
 		customerRepository.save(customer);
-		System.out.println("------------------save------------------"+customer.toString());
 	}
 
 }

@@ -10,16 +10,13 @@ import javax.persistence.ManyToOne;
 
 import org.springframework.stereotype.Component;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 @Component
 @Entity
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "customer_id")
-	private int customerId;
+	private Long customerId;
 
 	@Column(name = "customer_name")
 	private String customerName;
@@ -38,18 +35,18 @@ public class Customer {
 	@JoinColumn(name = "vendor_type_id", unique = true)
 	private VendorType vendorType;
 	private String cardNumber;
-	private float balance;
+	private Float balance;
 
 	@ManyToOne
 	@JoinColumn(name = "administrator_id", unique = true)
 	private Administrator administrator;
-	private boolean paid;
+	private Boolean paid;
 
-	public int getCustomerId() {
+	public Long getCustomerId() {
 		return customerId;
 	}
 
-	public void setCustomerId(int customerId) {
+	public void setCustomerId(Long customerId) {
 		this.customerId = customerId;
 	}
 
@@ -117,11 +114,11 @@ public class Customer {
 		this.cardNumber = cardNumber;
 	}
 
-	public float getBalance() {
+	public Float getBalance() {
 		return balance;
 	}
 
-	public void setBalance(float balance) {
+	public void setBalance(Float balance) {
 		this.balance = balance;
 	}
 
@@ -133,11 +130,11 @@ public class Customer {
 		this.administrator = administrator;
 	}
 
-	public boolean isPaid() {
+	public Boolean getPaid() {
 		return paid;
 	}
 
-	public void setPaid(boolean paid) {
+	public void setPaid(Boolean paid) {
 		this.paid = paid;
 	}
 

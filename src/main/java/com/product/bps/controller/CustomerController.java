@@ -2,8 +2,6 @@ package com.product.bps.controller;
 
 import java.io.IOException;
 
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,7 +24,7 @@ public class CustomerController {
 	CustomerRepository customerRepository;
 
 	@RequestMapping(value = "/customerSave", method = RequestMethod.POST)
-	public ResponseEntity<String> customerSave(@RequestBody String customerJson, HttpServletResponse response) throws IOException {
+	public ResponseEntity<?> customerSave(@RequestBody String customerJson) throws IOException {
 
 		CustomerDto customerDto = new CustomerDto();
 		Gson gson = new Gson();
@@ -36,11 +34,9 @@ public class CustomerController {
 		try {
 
 			customerService.saveCustomer(customerDto);
-			//return response.setStatus(200, "Successfull");
-			return new ResponseEntity(HttpStatus.OK);
+			return new ResponseEntity<String>("Success", HttpStatus.OK);
 		} catch (Exception e) {
-			//response.sendError(500, "Failure");
-			return new ResponseEntity(HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<String>("Failure", HttpStatus.BAD_REQUEST);
 
 		}
 		
