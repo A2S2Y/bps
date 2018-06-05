@@ -8,6 +8,7 @@ import com.product.bps.entity.Customer;
 import com.product.bps.entity.VendorType;
 import com.product.bps.repository.CustomerRepository;
 import com.product.bps.repository.VendorTypeRepository;
+import com.product.bps.util.CustomerUtility;
 
 @Service
 public class CustomerService {
@@ -17,6 +18,9 @@ public class CustomerService {
 
 	@Autowired
 	VendorTypeRepository vendorTypeRepository;
+
+	@Autowired
+	CustomerUtility customerUtility;
 
 	public void saveCustomer(CustomerDto customerJson) {
 
@@ -43,6 +47,24 @@ public class CustomerService {
 		// customer.setAdministrator(customerJson.getAdministratorId());
 		customer.setPaid(customerJson.getPaid());
 		customerRepository.save(customer);
+	}
+
+	public CustomerDto getCustomer(String id) {
+
+		Customer customer = new Customer();
+
+		customer = customerRepository.findByCustomerId(Long.parseLong(id));
+
+		CustomerDto customerDto = customerUtility.getDetails(customer);
+
+		return customerDto;
+	}
+
+	public void deleteCustomer(String id) {
+
+		Customer customer = customerRepository.findByCustomerId(Long.parseLong(id));
+		customerRepository.delete(customer);
+
 	}
 
 }
