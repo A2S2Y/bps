@@ -102,4 +102,12 @@ public class CustomerDto {
 		this.paid = paid;
 	}
 
+	@Override
+	public String toString() {
+		return "CustomerDto [customerId=" + customerId + ", customerName=" + customerName + ", contactNumber="
+				+ contactNumber + ", mailId=" + mailId + ", state=" + state + ", country=" + country + ", address="
+				+ address + ", vendorTypeId=" + vendorTypeId + ", cardNumber=" + cardNumber + ", balance=" + balance
+				+ ", paid=" + paid + "]";
+	}
+
 }
