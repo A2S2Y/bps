@@ -32,7 +32,6 @@ public class CustomerController {
 		CustomerDto customerDto = new CustomerDto();
 		Gson gson = new Gson();
 		customerDto = gson.fromJson(customerJson, CustomerDto.class);
-		System.out.println("---------customerDto--------"+customerDto);
 		try {
 			customerService.saveCustomer(customerDto);
 			return new ResponseEntity<String>("Success", HttpStatus.OK);

@@ -26,17 +26,12 @@ public class AdministratorController {
 
 		AdministratorDTO administratorDTO = new AdministratorDTO();
 		Gson gson = new Gson();
-
 		administratorDTO = gson.fromJson(login, AdministratorDTO.class);
-
 		List<Administrator> administrator = administratorService.validateUser(administratorDTO);
-
 		if (administrator.size() > 0) {
-			
-			return new ResponseEntity<String>("Success",HttpStatus.OK);
-
-		}else {
-			return new ResponseEntity<String>("Failure",HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<String>("Success", HttpStatus.OK);
+		} else {
+			return new ResponseEntity<String>("Failure", HttpStatus.BAD_REQUEST);
 		}
 
 	}
